@@ -41,6 +41,12 @@ create trigger on_auth_user_created
   after insert on auth.users
   for each row execute function public.handle_new_user();
 
+-- Users created before this migration (e.g. the demo account) get a profile too.
+insert into public.profiles (id, full_name, phone)
+select u.id, coalesce(u.raw_user_meta_data ->> 'full_name', split_part(u.email, '@', 1)), u.raw_user_meta_data ->> 'phone'
+from auth.users u
+on conflict (id) do nothing;
+
 -- ---------------------------------------------------------------------------
 -- branches (public read)
 -- ---------------------------------------------------------------------------
