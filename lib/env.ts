@@ -4,7 +4,8 @@ export function getSupabasePublicEnv() {
   if (!url || !anonKey) {
     throw new Error("ยังไม่ได้ตั้งค่า NEXT_PUBLIC_SUPABASE_URL / NEXT_PUBLIC_SUPABASE_ANON_KEY");
   }
-  return { url, anonKey };
+  // supabase-js appends /rest/v1, /auth/v1, ... itself; a pasted API path would double it.
+  return { url: new URL(url).origin, anonKey };
 }
 
 export function hasSupabaseEnv() {
