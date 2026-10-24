@@ -1,26 +1,149 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+/* Design tokens: use these names (bg-navy, text-cta, ...) instead of raw hex values in components. */
+@theme {
+  --color-navy: #1e3a5f;
+  --color-navy-dark: #152b47;
+  --color-navy-soft: #e8eef6;
+  --color-cta: #ea580c;
+  --color-cta-hover: #c2410c;
+  --color-page: #f8fafc;
+  --color-card: #ffffff;
+  --color-alt: #f1f5f9;
+  --color-highlight: #fff7ed;
+  --color-ink: #0f172a;
+  --color-muted: #64748b;
+  --color-line: #e2e8f0;
+  --color-success: #16a34a;
+  --color-success-soft: #dcfce7;
+  --color-danger: #dc2626;
+  --color-danger-soft: #fee2e2;
+  --color-star: #f59e0b;
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+  --font-sans: var(--font-noto-thai), ui-sans-serif, system-ui, sans-serif;
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  --animate-fade-in: fade-in 0.2s ease-out;
+  --animate-pop-in: pop-in 0.25s ease-out;
+  --animate-slide-in: slide-in 0.3s ease-out;
+
+  @keyframes fade-in {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  @keyframes pop-in {
+    from { opacity: 0; transform: translateY(12px) scale(0.98); }
+    to { opacity: 1; transform: none; }
+  }
+  @keyframes slide-in {
+    from { opacity: 0; transform: translateX(24px); }
+    to { opacity: 1; transform: none; }
   }
 }
 
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
+}
+
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--color-page);
+  color: var(--color-ink);
+}
+
+/*
+ * App frame. Every page renders inside .app-frame, which is a size container: components use
+ * container variants (@md:, @lg:) instead of viewport breakpoints so "Phone View" looks exactly
+ * like a real phone even on a wide screen.
+ */
+.app-viewport {
+  min-height: 100dvh;
+}
+
+.app-frame {
+  container-type: inline-size;
+  background: var(--color-page);
+  scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
+}
+
+.app-shell {
+  display: flex;
+  flex-direction: column;
+  min-height: 100dvh;
+}
+
+@media (min-width: 640px) {
+  html[data-view="phone"] body {
+    overflow: hidden;
+  }
+
+  html[data-view="phone"] .app-viewport {
+    height: 100dvh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: radial-gradient(circle at top, var(--color-navy-soft), var(--color-alt));
+  }
+
+  html[data-view="phone"] .app-frame {
+    width: 390px;
+    height: min(844px, calc(100dvh - 32px));
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    border: 10px solid var(--color-ink);
+    border-radius: 48px;
+    box-shadow: 0 30px 60px -20px rgb(15 23 42 / 0.45);
+    /* Makes position: fixed children (navbar, modals, toasts) stick to the frame, not the window. */
+    transform: translateZ(0);
+    scrollbar-width: none;
+  }
+
+  html[data-view="phone"] .app-frame::-webkit-scrollbar {
+    display: none;
+  }
+
+  html[data-view="phone"] .app-shell {
+    min-height: 100%;
+  }
+}
+
+/* Scroll reveal (see components/reveal.tsx). */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition:
+    opacity 0.6s ease-out,
+    transform 0.6s ease-out;
+}
+
+.reveal[data-direction="left"] {
+  transform: translateX(-32px);
+}
+
+.reveal[data-direction="right"] {
+  transform: translateX(32px);
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html,
+  .app-frame {
+    scroll-behavior: auto;
+  }
+
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+/* Leaflet custom markers. */
+.bf-marker {
+  background: transparent;
+  border: none;
 }
