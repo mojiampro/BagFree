@@ -38,7 +38,7 @@ Web App สำหรับนำเสนอโปรเจกต์ในรา
 
 ## Features
 1. **Auth** — Supabase Email/Password (Register, Sign In, Sign Out) + ปุ่ม "Demo Login" (demo@bagfree.test / demo1234)
-2. **Landing Page** — Navbar, Hero (CTA "ส่งเลย" / "ฝากกระเป๋าเลย"), Service Cards 3 ใบ (ส่ง / ฝาก / รับคืน), Branch Directory, รีวิวล่าสุด, Project Roadmap, Footer
+2. **Landing Page** — Navbar, Hero (CTA "ส่งเลย" / "ฝากกระเป๋าเลย"), Service Cards 3 ใบ (ส่ง / ฝาก / รับคืน), Branch Directory, รีวิวล่าสุด, Footer
 3. **Booking (/book)** — Step-by-step: เลือกบริการ → รายละเอียด → สรุปราคา → ชำระเงิน → ยืนยัน
    - ส่งกระเป๋า 3 โหมด: สาขา→โรงแรม, โรงแรม→สาขา, สาขา→สาขา
    - ฝากกระเป๋า: สาขา, วัน-เวลาฝาก, วัน-เวลารับคืน (ต้องหลังเวลาฝากและอยู่ในเวลาเปิด)

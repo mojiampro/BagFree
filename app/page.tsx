@@ -3,7 +3,6 @@ import { BranchDirectory, BranchDirectorySkeleton } from "@/components/landing/b
 import { Hero } from "@/components/landing/hero";
 import { LatestReviews, LatestReviewsSkeleton } from "@/components/landing/latest-reviews";
 import { Pricing } from "@/components/landing/pricing";
-import { Roadmap } from "@/components/landing/roadmap";
 import { Services } from "@/components/landing/services";
 
 export default function HomePage() {
@@ -18,7 +17,6 @@ export default function HomePage() {
       <Suspense fallback={<LatestReviewsSkeleton />}>
         <LatestReviews />
       </Suspense>
-      <Roadmap />
     </>
   );
 }

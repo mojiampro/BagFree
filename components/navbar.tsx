@@ -13,7 +13,6 @@ const NAV_LINKS = [
   { href: "/#pricing", label: "ราคา" },
   { href: "/#branches", label: "สาขา" },
   { href: "/#reviews", label: "รีวิว" },
-  { href: "/#roadmap", label: "Roadmap" },
 ];
 
 const ACCOUNT_LINKS = [
