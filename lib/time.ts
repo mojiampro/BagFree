@@ -65,3 +65,8 @@ export function formatDateTime(value: string | Date) {
 export function formatDate(value: string | Date) {
   return dateFormatter.format(new Date(value));
 }
+
+/** Request-time timestamp for Server Components (keeps render bodies free of direct impure calls). */
+export function requestTimestamp() {
+  return Date.now();
+}

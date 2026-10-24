@@ -147,3 +147,11 @@ body {
   background: transparent;
   border: none;
 }
+
+.bf-route {
+  stroke: var(--color-navy);
+}
+
+.bf-route-casing {
+  stroke: var(--color-card);
+}

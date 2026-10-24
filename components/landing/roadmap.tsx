@@ -21,13 +21,13 @@ const MILESTONES: { phase: string; title: string; items: string[]; stage: Stage 
     phase: "Phase 3",
     title: "ติดตามและรับคืน",
     items: ["แผนที่ติดตามรถแบบเรียลไทม์", "Live Driver Mode", "QR Code สำหรับรับคืน"],
-    stage: "next",
+    stage: "done",
   },
   {
     phase: "Phase 4",
     title: "แดชบอร์ดและรีวิว",
     items: ["แจ้งเตือนสถานะแบบ Realtime", "ประวัติการจอง", "รีวิวครึ่งดาวได้"],
-    stage: "future",
+    stage: "next",
   },
   {
     phase: "อนาคต",
