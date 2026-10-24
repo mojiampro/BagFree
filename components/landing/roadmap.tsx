@@ -15,13 +15,13 @@ const MILESTONES: { phase: string; title: string; items: string[]; stage: Stage 
     phase: "Phase 2",
     title: "จองและชำระเงิน",
     items: ["จองส่ง/ฝากแบบทีละขั้นตอน", "ค้นหาโรงแรม + คำนวณเส้นทาง", "Stripe: บัตร, PromptPay, เงินสด"],
-    stage: "next",
+    stage: "done",
   },
   {
     phase: "Phase 3",
     title: "ติดตามและรับคืน",
     items: ["แผนที่ติดตามรถแบบเรียลไทม์", "Live Driver Mode", "QR Code สำหรับรับคืน"],
-    stage: "future",
+    stage: "next",
   },
   {
     phase: "Phase 4",
