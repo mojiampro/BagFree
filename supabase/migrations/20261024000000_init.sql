@@ -2,8 +2,6 @@
 -- Every table has RLS enabled. Prices, codes and status changes are written by the server
 -- (service role); users may only read their own bookings and edit a few contact fields.
 
-create extension if not exists pgcrypto;
-
 -- ---------------------------------------------------------------------------
 -- profiles
 -- ---------------------------------------------------------------------------

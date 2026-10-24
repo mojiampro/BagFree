@@ -27,7 +27,7 @@ const MILESTONES: { phase: string; title: string; items: string[]; stage: Stage 
     phase: "Phase 4",
     title: "แดชบอร์ดและรีวิว",
     items: ["แจ้งเตือนสถานะแบบ Realtime", "ประวัติการจอง", "รีวิวครึ่งดาวได้"],
-    stage: "next",
+    stage: "done",
   },
   {
     phase: "อนาคต",

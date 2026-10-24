@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import { createContext, useCallback, useContext, useEffect, useMemo, useState, type ReactNode } from "react";
 import { AuthForm } from "@/components/auth/auth-form";
 import { Modal } from "@/components/modal";
+import { NotificationsProvider } from "@/components/providers/notifications-provider";
 import { hasSupabaseEnv } from "@/lib/env";
 import { createClient } from "@/lib/supabase/client";
 
@@ -79,7 +80,9 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
   return (
     <AuthContext value={value}>
-      {children}
+      <NotificationsProvider user={user}>
+        {children}
+      </NotificationsProvider>
       <Modal
         open={loginNext !== null}
         onClose={closeLogin}

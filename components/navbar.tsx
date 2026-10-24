@@ -4,6 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { LogOutIcon, LuggageIcon, MenuIcon, UserIcon, XIcon } from "@/components/icons";
+import { NotificationBell } from "@/components/notification-bell";
 import { useAuth } from "@/components/providers/auth-provider";
 import { buttonClass } from "@/components/ui";
 
@@ -82,6 +83,8 @@ export function Navbar() {
           {loading ? (
             <span className="size-9 animate-pulse rounded-full bg-white/20" aria-label="กำลังโหลด" />
           ) : user ? (
+            <>
+            <NotificationBell />
             <div className="relative" ref={accountRef}>
               <button
                 type="button"
@@ -123,6 +126,7 @@ export function Navbar() {
                 </div>
               ) : null}
             </div>
+            </>
           ) : (
             <button
               type="button"

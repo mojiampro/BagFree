@@ -19,6 +19,11 @@ Web App สำหรับนำเสนอโปรเจกต์ในรา
 - Stripe 23 (API `2026-09-30.endive`): Checkout ใช้ `allowed_payment_method_types` แทน `payment_method_types`
 - `@supabase/ssr` 0.12: cookies ต้องใช้ `getAll` / `setAll`
 
+## Conventions
+- Responsive ใช้ container queries (`@md:`, `@2xl:`, `@4xl:`) ไม่ใช้ `md:`/`lg:` เพราะทุกหน้าอยู่ใน `.app-frame` (Phone View จำกัดความกว้าง 390px)
+- ราคา/สถานะ/โค้ด เขียนผ่าน service role ใน API routes เท่านั้น (`lib/supabase/admin.ts`); client อ่านผ่าน RLS
+- Demo timeline อยู่ที่ `lib/simulation.ts` ใช้ร่วมกันระหว่างแผนที่และ `/api/bookings/sync`
+
 ## Commands
 - `npm run dev` — dev server
 - `npm run build` — ต้องผ่านก่อนจบทุก Phase
