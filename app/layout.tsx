@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Noto_Sans_Thai } from "next/font/google";
+import { AdPopup } from "@/components/ads/ad-popup";
 import { Footer } from "@/components/footer";
 import { Navbar } from "@/components/navbar";
 import { AuthProvider } from "@/components/providers/auth-provider";
@@ -41,6 +42,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
                 <main className="flex flex-1 flex-col">{children}</main>
                 <Footer />
               </div>
+              <AdPopup />
             </AuthProvider>
           </div>
         </div>

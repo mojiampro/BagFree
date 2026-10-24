@@ -81,21 +81,27 @@ function BranchSelect({
 export function BookingWizard({
   branches,
   initialService,
+  initialBranchId = null,
+  initialPromo = "",
   defaults,
 }: {
   branches: Branch[];
   initialService: ServiceType | null;
+  /** Preselected branch (from a "drop your bags at ..." link). */
+  initialBranchId?: number | null;
+  /** Discount code to apply automatically on the summary step. */
+  initialPromo?: string;
   defaults: WizardDefaults;
 }) {
   const router = useRouter();
   const [step, setStep] = useState(initialService ? 1 : 0);
   const [service, setService] = useState<ServiceType | null>(initialService);
   const [mode, setMode] = useState<DeliveryMode>("branch_to_hotel");
-  const [originBranch, setOriginBranch] = useState<number | null>(null);
+  const [originBranch, setOriginBranch] = useState<number | null>(initialBranchId);
   const [destinationBranch, setDestinationBranch] = useState<number | null>(null);
   const [hotel, setHotel] = useState<Place | null>(null);
   const [scheduled, setScheduled] = useState(defaults.scheduled);
-  const [storageBranch, setStorageBranch] = useState<number | null>(null);
+  const [storageBranch, setStorageBranch] = useState<number | null>(initialBranchId);
   const [storageStart, setStorageStart] = useState(defaults.storageStart);
   const [storageEnd, setStorageEnd] = useState(defaults.storageEnd);
   const [sender, setSender] = useState("");
@@ -104,7 +110,7 @@ export function BookingWizard({
   const [bags, setBags] = useState<BagCounts>(emptyBagCounts);
   const [errors, setErrors] = useState<Errors>({});
 
-  const [codeInput, setCodeInput] = useState("");
+  const [codeInput, setCodeInput] = useState(initialPromo);
   const [discount, setDiscount] = useState<DiscountResponse | null>(null);
   const [discountError, setDiscountError] = useState<string | null>(null);
   const [checkingCode, setCheckingCode] = useState(false);
@@ -188,6 +194,8 @@ export function BookingWizard({
     setDiscountError(null);
     setSubmitError(null);
     setStep(2);
+    // A code typed earlier, or prefilled from a promotion link, is re-checked against the new subtotal.
+    if (codeInput.trim()) void applyCode();
   }
 
   async function applyCode() {

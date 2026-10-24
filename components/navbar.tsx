@@ -10,6 +10,7 @@ import { buttonClass } from "@/components/ui";
 
 const NAV_LINKS = [
   { href: "/#services", label: "บริการ" },
+  { href: "/#explore", label: "ที่เที่ยว" },
   { href: "/#pricing", label: "ราคา" },
   { href: "/#branches", label: "สาขา" },
   { href: "/#reviews", label: "รีวิว" },

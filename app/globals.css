@@ -161,3 +161,19 @@ body {
 .bf-route-casing {
   stroke: var(--color-card);
 }
+
+/* Progress bar of the active dot in components/ads/promo-slider.tsx. */
+.ad-progress {
+  animation-name: ad-progress;
+  animation-timing-function: linear;
+  animation-fill-mode: both;
+}
+
+@keyframes ad-progress {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}

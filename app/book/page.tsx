@@ -19,7 +19,7 @@ function suggestedStart(now: Date) {
 }
 
 export default async function BookPage({ searchParams }: PageProps<"/book">) {
-  const { service } = await searchParams;
+  const { service, branch, promo } = await searchParams;
   const initialService: ServiceType | null = service === "delivery" || service === "storage" ? service : null;
   const { data: branches, error } = await getBranches();
 
@@ -41,7 +41,13 @@ export default async function BookPage({ searchParams }: PageProps<"/book">) {
         ) : branches.length === 0 ? (
           <EmptyState title="ยังไม่มีสาขาให้บริการ" message="รัน supabase/seed.sql เพื่อเพิ่มข้อมูลสาขา" />
         ) : (
-          <BookingWizard branches={branches} initialService={initialService} defaults={defaults} />
+          <BookingWizard
+            branches={branches}
+            initialService={initialService}
+            initialBranchId={branches.find((b) => String(b.id) === branch)?.id ?? null}
+            initialPromo={typeof promo === "string" ? promo.toUpperCase().slice(0, 20) : ""}
+            defaults={defaults}
+          />
         )}
       </div>
     </div>

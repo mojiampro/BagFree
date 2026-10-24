@@ -10,7 +10,7 @@ import {
 
 export function Pricing() {
   return (
-    <section id="pricing" className="bg-alt px-4 py-16 @2xl:py-20">
+    <section id="pricing" className="bg-page px-4 py-16 @2xl:py-20">
       <div className="mx-auto max-w-4xl">
         <Reveal>
           <SectionHeading eyebrow="ราคา" title="ราคาชัดเจน ไม่มีค่าใช้จ่ายแอบแฝง" />

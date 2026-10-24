@@ -6,7 +6,7 @@ import { formatOpeningHours, isWithinOpeningHours } from "@/lib/time";
 
 function BranchSection({ children }: { children: React.ReactNode }) {
   return (
-    <section id="branches" className="bg-page px-4 py-16 @2xl:py-20">
+    <section id="branches" className="bg-alt px-4 py-16 @2xl:py-20">
       <div className="mx-auto max-w-6xl">
         <Reveal>
           <SectionHeading

@@ -28,6 +28,8 @@ interface NotificationsContextValue {
   markAllRead: () => void;
   clear: () => void;
   reviewedIds: ReadonlySet<string>;
+  /** True while the review popup is on screen, so other popups can wait. */
+  reviewOpen: boolean;
   openReview: (target: ReviewTarget) => void;
   /** Opens the review popup for the first finished, unreviewed booking the user has not dismissed. */
   promptPendingReview: (bookings: ReviewTarget[]) => void;
@@ -204,10 +206,11 @@ export function NotificationsProvider({ user, children }: { user: User | null; c
       markAllRead,
       clear,
       reviewedIds,
+      reviewOpen: reviewTarget !== null,
       openReview,
       promptPendingReview,
     }),
-    [notifications, markAllRead, clear, reviewedIds, openReview, promptPendingReview],
+    [notifications, markAllRead, clear, reviewedIds, reviewTarget, openReview, promptPendingReview],
   );
 
   return (
