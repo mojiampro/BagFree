@@ -28,7 +28,7 @@ Web App สำหรับนำเสนอโปรเจกต์ในรา
 - `npm run dev` — dev server
 - `npm run build` — ต้องผ่านก่อนจบทุก Phase
 - `npm run lint` — ต้องไม่มี error
-- `stripe listen --forward-to localhost:3000/api/webhook` — ทดสอบ webhook
+- `stripe listen --events checkout.session.completed,checkout.session.async_payment_succeeded,checkout.session.async_payment_failed,checkout.session.expired --forward-to localhost:3000/api/webhook` — ทดสอบ webhook
 
 ## Phases
 1. Foundation — theme, layout, Supabase clients, proxy, migrations + seed, pricing/codes lib, Auth (modal + หน้า login/register + Demo Login), Landing Page, Mobile Frame Toggle

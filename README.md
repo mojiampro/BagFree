@@ -32,7 +32,7 @@ npm run dev
 3. รัน webhook ระหว่างพัฒนา แล้วนำ `whsec_...` ที่ได้ไปใส่ `STRIPE_WEBHOOK_SECRET`
 
 ```bash
-stripe listen --forward-to localhost:3000/api/webhook
+stripe listen --events checkout.session.completed,checkout.session.async_payment_succeeded,checkout.session.async_payment_failed,checkout.session.expired --forward-to localhost:3000/api/webhook
 ```
 
 บัตรทดสอบ: `4242 4242 4242 4242` วันหมดอายุอนาคตใดก็ได้ CVC 3 หลักใดก็ได้
